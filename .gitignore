@@ -1,6 +1,6 @@
 .DS_Store
 .idea
-./backend/web/
+backend/web
 
 #### backend
 node_modules
