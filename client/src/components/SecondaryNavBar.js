@@ -45,7 +45,7 @@ class SecondaryNavBar extends React.PureComponent {
         if(groupForm) {
           getContainers('all')
         }
-      }}>Create New GROUP again</Button>
+      }}>Create New Group</Button>
   }
 
   groupsToggler () {
