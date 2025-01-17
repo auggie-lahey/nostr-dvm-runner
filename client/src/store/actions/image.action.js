@@ -11,6 +11,11 @@ export const runImage = payload => ({
   payload
 })
 
+export const pullImage = payload => ({
+  type: 'RUN_IMAGE',
+  payload
+})
+
 export const removeImage = payload => ({
   type: 'DELETE_IMAGE',
   payload

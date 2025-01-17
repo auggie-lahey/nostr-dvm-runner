@@ -7,7 +7,11 @@ export default (state = null, action) => {
          ...state,
          ...action.payload
        }
-
+     case 'PULL_IMAGE':
+       return {
+      ...state,
+      ...action.payload
+      }
      case 'RUN_IMAGE':
        return {
          ...state,
