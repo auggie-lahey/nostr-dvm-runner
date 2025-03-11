@@ -5,7 +5,7 @@ FROM node:18-alpine
 WORKDIR /src
 
 # Install Python, pip, and build tools in one RUN command
-RUN apk add --no-cache python3 py3-pip build-base docker-cli
+RUN apk add --no-cache python3 py3-pip build-base docker-cli ffmpeg
 
 # Copy application files to the container
 COPY ./backend /src/backend

@@ -1,12 +1,15 @@
 export default {
-   images: [],
-   loading: false,
-   pageError: false,
-   showImagePage: false,
-   showNewImageForm: false, 
-   activeIndex: 0,
-   isShowingSideSheet: false,
-   logData: {},
-   showModal: false,
-   selectedImage: {}
- }
+  activeIndex: 0,
+  createFormLoading: false,
+  images: [],
+  imageListLoading: true,
+  isShowingSideSheet: false,
+  loading: false,
+  logData: {},
+  newGroupName: '',
+  pageError: false,
+  selectedImage: {},
+  showImagePage: false,
+  showNewImageForm: false, 
+  showModal: false,
+}

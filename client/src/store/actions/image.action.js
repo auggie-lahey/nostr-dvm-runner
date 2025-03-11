@@ -11,10 +11,24 @@ export const runImage = payload => ({
   payload
 })
 
-export const pullImage = payload => ({
-  type: 'RUN_IMAGE',
-  payload
-})
+export const pullImage = data => {
+  return dispatch => {
+    dispatch(genericImage({ createFormLoading: true }))
+    const url = `image?name=${encodeURIComponent(data.image)}`;
+    request('post', url)
+      .then(res => {
+        setTimeout(() => {
+          dispatch(genericImage({ 
+            newImageName: '',
+            showImagePage: true,
+            showNewImageForm: false,
+            createFormLoading: false,
+          }))
+        }, 1200)
+      })
+  }
+}
+
 
 export const removeImage = payload => ({
   type: 'DELETE_IMAGE',

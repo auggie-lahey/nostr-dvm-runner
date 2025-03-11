@@ -32,6 +32,7 @@ app.get("/api/container/stats", ContainerController.stats);
 
 app.get("/api/image/fetch", ImageController.fetch);
 app.get("/api/image/command", ImageController.command);
+app.post("/api/image", ImageController.pull);
 app.get("/api/cleanup/command", CleanUpController.command);
 
 app.post("/api/groups", GroupController.create);

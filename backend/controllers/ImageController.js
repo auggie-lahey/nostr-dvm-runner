@@ -20,3 +20,18 @@ exports.command = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.pull = async (req, res) => {
+  try {
+    const images = await safeTerminal.pull(req.query.name);
+    res.json(images.replace("\n", ""));
+  } catch (error) {
+    console.log(error)
+  }
+
+  // const imagesArray = images
+  //   .split("\n")
+  //   .filter((image) => image !== "")
+  //   .map((image) => JSON.parse(image));
+  // res.json(imagesArray);
+};

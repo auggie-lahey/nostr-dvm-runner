@@ -6,7 +6,7 @@ export const request = ( method, path, data = {} ) => {
     method,
     data,
     url: restPath + path,
-    timeout: 50000,
+    timeout: 300000,
   }
   return axios(options)
 }

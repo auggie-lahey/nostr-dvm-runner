@@ -13,12 +13,12 @@ class NewImageForm extends React.PureComponent {
   }
 
   handleSubmit () {
-    const { pullImage, newImageName, selectedItems } = this.props
-    pullImage({newImageName, selectedItems})
+    const { pullImage, newImageName} = this.props
+    pullImage({image: newImageName})
   }
 
   render () {
-    const { selectedItems, newImageName, genericImage, createFormLoading } = this.props
+    const { newImageName, genericImage, createFormLoading } = this.props
     return <Pane 
       display='flex'
       justifyContent='center'
@@ -37,22 +37,6 @@ class NewImageForm extends React.PureComponent {
             }}
             value={newImageName}
           />
-          {
-            this.state.toggleLink && <TextInput
-              name="text-input-name"
-              placeholder="URL of the application"
-              height={26}
-              marginTop={6}
-              display='flex'
-              flexGrow={1}
-              onChange={e => {
-                genericImage({
-                  newImageName: e.target.value
-                })
-              }}
-              value={newImageName}
-            />
-          }
         </Pane>
         <Pane display="flex" style={{height: '100%'}}>
           {/*<IconButton 
@@ -72,7 +56,7 @@ class NewImageForm extends React.PureComponent {
             appearance="primary"
             marginLeft={6}
             intent="success"
-            disabled={(selectedItems.length <= 0) || (newImageName === '')}
+            //disabled={(selectedItems.length <= 0) || (newImageName === '')}
             isLoading={createFormLoading}
             onClick={(e) => {
               e.preventDefault()
@@ -88,9 +72,8 @@ class NewImageForm extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
-    newImageName: state.Images.newImageName,
-    selectedItems: state.Images.selectedItems,
-    createFormLoading: state.Images.createFormLoading,
+    newImageName: state.image.newImageName,
+    createFormLoading: state.image.createFormLoading,
   }
 }
 

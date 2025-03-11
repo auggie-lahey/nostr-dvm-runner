@@ -29,7 +29,6 @@ class Modal extends Component {
        if(this.props.container){
          this.props.deleteContainer(this.props.container, 'rm')
        } else {
-          console.log('else')
          this.props.deleteImage(this.props.image, 'rm')
        }
     }

@@ -1,12 +1,12 @@
 export default {
-  groups: [],
-  selectedItems: [],
-  showGroupsPage: false,
-  showNewGroupForm: false,
   activeIndex: 0,
-  newGroupName: '',
   createFormLoading: false,
+  groups: [],
   groupListLoading: true,
   groupsRunning: [],
   groupsSwitchDisabled: [],
+  newGroupName: '',
+  selectedItems: [],
+  showGroupsPage: false,
+  showNewGroupForm: false
 }

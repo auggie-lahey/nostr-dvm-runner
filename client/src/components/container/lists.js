@@ -11,7 +11,6 @@ class ContainersList extends React.PureComponent {
 
   componentDidMount () {
     this.props.getContainers(this.props.segment)
-    console.log('log this.props:', this.props); // Add this line to check the value
   }
 
   render () {

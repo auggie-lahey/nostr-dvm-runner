@@ -1,35 +1,19 @@
 const child_process = require("child_process");
 console.log('Starting child process...');
 
-const isValidId = (id) => /^[0-9a-zA-Z\/\.\:\-]+$/.test(id.trim());
+const isValidId = (id) => /^[0-9a-zA-Z]+$/.test(id.trim());
 const isValidString = (id) => /^[a-zA-Z]+$/.test(id.trim());
 
 const Terminal = (command) =>
   new Promise((resolve, reject) => {
-    console.log(`Executing command: ${command}`);
-    const child = child_process.exec(
+    child_process.exec(
       command,
       { maxBuffer: 1500 * 1024 },
       function (error, stdout, stderr) {
-        if (error) {
-          console.error(`Error: ${error.message}`);
-          return reject(error);
-        }
-        if (stderr) {
-          console.error(`Stderr: ${stderr}`);
-        }
-        console.log(`Stdout: ${stdout}`);
-        resolve(stdout || stderr);
+        if (!!error) reject(error);
+        else resolve(stdout || stderr);
       }
     );
-
-    child.stdout.on('data', (data) => {
-      console.log(`Child stdout: ${data}`);
-    });
-
-    child.stderr.on('data', (data) => {
-      console.error(`Child stderr: ${data}`);
-    });
   });
 
 exports.safeTerminal = {
@@ -60,7 +44,8 @@ exports.safeTerminal = {
     if (!isValidId(id)) {
       throw new Error("The container id is invalid");
     }
-    return Terminal(`docker pull ${id}`);
+    return Terminal(`au9913/nostrdvm`);
+    // return Terminal(`docker pull ${id}`);
   },
   logs: async (id) => {
     if (!isValidId(id)) {
