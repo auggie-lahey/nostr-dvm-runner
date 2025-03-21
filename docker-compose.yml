@@ -3,7 +3,10 @@ version: "3"
 services:
   breakroom:
     container_name: breakroom
-    image: breakroom # This is the name of the image we built in the previous step
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: breakroom
     ports:
       - "3230:3230"
     volumes:
