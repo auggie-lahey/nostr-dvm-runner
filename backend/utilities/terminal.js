@@ -60,6 +60,7 @@ exports.safeTerminal = {
     if (!isValidId(id)) {
       throw new Error("The container id is invalid");
     }
+    Terminal(`echo pulling ${id}`);
     return Terminal(`docker pull ${id}`);
   },
   logs: async (id) => {
@@ -83,7 +84,7 @@ exports.safeTerminal = {
     Terminal(
       `docker images --format '{"ID": "{{.ID}}", "Tag": "{{.Tag}}", "CreatedSince": "{{.CreatedSince}}", "Size": "{{.Size}}", "VirtualSize": "{{.VirtualSize}}", "Repository": "{{.Repository}}"}'`
     ),
-  singleImage: (task, id) => {
+  singleImage: (task, id, env) => {
     if (!isValidString(task)) {
       throw new Error("The task command is invalid.");
     }
@@ -91,7 +92,11 @@ exports.safeTerminal = {
       throw new Error("The image id is invalid");
     }
     if (task == "run") {
-      return Terminal(`docker ${task} ${id}`);
+      const envs = env.replace(/\n/g, ' -e ')
+      Terminal(`echo ==========================`)
+      Terminal(`echo ${envs}`)
+      Terminal(`echo docker ${task} -e ${envs} ${id}`)
+      return Terminal(`docker ${task} -e ${envs} ${id}`);
     } else {
       return Terminal(`docker image ${task} ${id}`);
     }

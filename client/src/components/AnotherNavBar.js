@@ -9,10 +9,11 @@ import { genericImage } from '../store/actions/image.action'
 
 import NewImageForm from './image/NewImageForm'
 
+
 class AnotherNavBar extends React.PureComponent {
   state = {
     isTextDialogShown: false,
-    textContent: ''
+    textContent: global.containter_env_variables,
   }
 
   newImageButton () {
@@ -32,9 +33,7 @@ class AnotherNavBar extends React.PureComponent {
         if(imageForm) {
           getImages()
         }
-
       }}>Pull New Image</Button>
-
   }
 
   textBoxButton() {
@@ -58,14 +57,18 @@ class AnotherNavBar extends React.PureComponent {
           confirmLabel="Save"
           onConfirm={() => {
             // Handle the text content here
-            console.log(this.state.textContent)
-            this.setState({ isTextDialogShown: false })
+            global.container_env_variables = this.state.textContent
+            this.setState(
+              { 
+                isTextDialogShown: false, 
+              }
+            )
           }}
         >
           <Textarea
             value={this.state.textContent}
             onChange={e => this.setState({ textContent: e.target.value })}
-            placeholder="Enter your text here..."
+            // placeholder={this.state.placeholder}
             width="100%"
             height={200}
           />

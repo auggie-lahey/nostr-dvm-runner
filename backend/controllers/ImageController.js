@@ -11,10 +11,12 @@ exports.fetch = async (req, res) => {
 };
 
 exports.command = async (req, res, next) => {
+  console.log(req.query.env); 
   const imageID = req.query.image;
   const command = req.query.command;
+  const env = req.query.env;
   try {
-    const cmdData = await safeTerminal.singleImage(command, imageID);
+    const cmdData = await safeTerminal.singleImage(command, imageID, env);
     res.json(cmdData.replace("\n", ""));
   } catch (error) {
     next(error);

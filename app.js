@@ -3,6 +3,8 @@ const path = require("path");
 const { safeTerminal } = require("./backend/utilities/terminal");
 const port = 3230;
 
+global.container_env_variables = '';
+
 async function app() {
   console.clear();
 

@@ -6,10 +6,16 @@ export const genericImage = payload => ({
   payload
 })
 
-export const runImage = payload => ({
-  type: 'RUN_IMAGE',
-  payload
-})
+export const runImage = payload => {
+  return {
+    type: 'RUN_IMAGE',
+    payload
+  }
+}
+// export const runImage = payload => ({
+//   type: 'RUN_IMAGE',
+//   payload
+// })
 
 export const pullImage = data => {
   return dispatch => {
@@ -69,7 +75,10 @@ export const runImageToContainer = (image) => {
       imageId: image.ID,
       data: { stateToggling: true },
     }))
-    request('get', `image/command?image=${image.ID}&command=${'run'}`)
+    console.log("runImageToContainer"); 
+    console.log(global.container_env_variables); 
+    console.log(encodeURIComponent(global.container_env_variables)); 
+    request('get', `image/command?image=${image.ID}&command=${'run'}&env=${encodeURIComponent(global.container_env_variables)}`)
       .then(res => {
         dispatch(runImage({
           imageId: image.ID,

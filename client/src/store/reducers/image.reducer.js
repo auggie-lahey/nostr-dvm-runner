@@ -13,7 +13,7 @@ export default (state = null, action) => {
       ...action.payload
       }
      case 'RUN_IMAGE':
-       return {
+      return {
          ...state,
          ...{
           images: state.images.map(c => {
