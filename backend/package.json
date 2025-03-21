@@ -7,10 +7,13 @@
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.21.2",
     "file-exists": "^5.0.1",
-    "knex": "^0.19.4",
-    "sqlite3": "^4.1.0",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7",
     "write": "^2.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
