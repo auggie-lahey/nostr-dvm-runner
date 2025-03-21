@@ -1,10 +1,9 @@
 version: "3"
 
 services:
-  docker-web-gui:
-    container_name: docker-web-gui
-    build:
-      context: .
+  breakroom:
+    container_name: breakroom
+    image: breakroom # This is the name of the image we built in the previous step
     ports:
       - "3230:3230"
     volumes:
